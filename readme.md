@@ -11,6 +11,12 @@ sudo git clone https://github.com/dev-ir/xui-templates-Fly.git /opt/DVHOST/views
 sudo sed -i 's/^TEMPLATE_NAME=.*/TEMPLATE_NAME=FlySubscription/' /opt/DVHOST/dvhost.config
 ```
 
+# Remove Older Version
+If you already have it installed, remove the previous version first.
+```
+rm -rf /opt/DVHOST/views/templates/FlySubscription
+```
+
 <details>
   <summary>Click for configuration file manual</summary>
 
@@ -40,7 +46,11 @@ systemctl status DVHOST_TEMPLATE
 sudo git clone https://github.com/dev-ir/xui-templates-Fly.git /opt/DVHOST/views/templates/FlySubscription/
 sudo sed -i 's/^TEMPLATE_NAME=.*/TEMPLATE_NAME=FlySubscription/' /opt/DVHOST/dvhost.config
 ```
-
+# حذف نسخه قبلی
+اگر نسخه قبلی دارد ابتدا حذف سپس اقدام به نصب نمایید.
+```
+rm -rf /opt/DVHOST/views/templates/FlySubscription
+```
 <details>
   <summary>📝 روش جایگزین: اضافه کردن مستقیم به فایل</summary>
 
