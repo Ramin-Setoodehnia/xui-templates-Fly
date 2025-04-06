@@ -362,6 +362,38 @@
             height: 20px;
         }
 
+        .language-toggle {
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            background-color: rgba(226, 232, 240, 0.5);
+            transition: all var(--transition-normal) ease;
+            margin-left: 10px;
+        }
+
+        .language-toggle:hover {
+            background-color: rgba(226, 232, 240, 0.8);
+            color: var(--text-primary);
+            transform: rotate(30deg);
+        }
+
+        .language-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .card-actions {
+            display: flex;
+            align-items: center;
+        }
+
         .links-section {
             margin-top: 30px;
         }
@@ -504,6 +536,64 @@
         .qr-close-button button:hover {
             opacity: 0.9;
         }
+
+        /* RTL Styles */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        body.rtl .card-title {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl h1::after {
+            left: auto;
+            right: 0;
+        }
+
+        body.rtl .username::before {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+
+        body.rtl .section-title::after {
+            left: auto;
+            right: 0;
+        }
+
+        body.rtl .accordion-header::after {
+            content: "◄";
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        body.rtl .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        body.rtl .link-item {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .platforms-grid {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .card-header::after {
+            left: 30px;
+            right: 30px;
+            transform-origin: 100% 0;
+        }
+
+        body.rtl .card-actions {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .language-toggle {
+            margin-left: 0;
+            margin-right: 10px;
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <% function formatBytes(bytes, decimals=2) { if (bytes===0) return '∞' ; const k=1024; const dm=decimals < 0 ? 0 :
@@ -548,26 +638,34 @@
 
 </head>
 
-<body data-theme="light">
+<body data-theme="light" data-lang="en">
     <div class="container">
         <div class="card animate-fade-in">
             <div class="card-header">
                 <div class="card-title">
                     <h1>Subscription</h1>
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </button>
+                    <div class="card-actions">
+                        <button class="language-toggle" id="languageToggle" aria-label="Toggle language">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 0 1 6.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                            </svg>
+                        </button>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
                 <div class="username animate-fade-in delay-1">
                     <%= data.email %>
@@ -674,8 +772,10 @@
 
     <script>
         const themeToggle = document.getElementById('themeToggle');
+        const languageToggle = document.getElementById('languageToggle');
         const body = document.body;
 
+        // Theme toggle functionality
         themeToggle.addEventListener('click', () => {
             if (body.getAttribute('data-theme') === 'light') {
                 body.setAttribute('data-theme', 'dark');
@@ -699,6 +799,19 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 `;
+            }
+        });
+
+        // Language toggle functionality
+        languageToggle.addEventListener('click', () => {
+            if (body.getAttribute('data-lang') === 'en') {
+                body.setAttribute('data-lang', 'fa');
+                body.classList.add('rtl');
+                // You can add Persian translations here if needed
+            } else {
+                body.setAttribute('data-lang', 'en');
+                body.classList.remove('rtl');
+                // You can add English translations here if needed
             }
         });
 
