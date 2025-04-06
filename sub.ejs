@@ -34,6 +34,7 @@
                 const lang = document.body.getAttribute('data-lang') || 'en'; 
                 const timeUnits = {
                     en: { day: "day", hour: "hour", minute: "minute" },
+                    ru: { day: "день", hour: "час", minute: "минута" },
                     fa: { day: "روز", hour: "ساعت", minute: "دقیقه" }
                 };
     
@@ -348,7 +349,33 @@ function getConnectionTitle(link) {
         active: "فعال",
         deactive: "غیرفعال",
         noSubs: "اشتراکی پیدا نشد."
-    }
+    },
+        ru: {
+        subscriptionInfo: "Информация о подписке",
+        email: "Электронная почта",
+        dataLimit: "Лимит данных",
+        used: "Использовано",
+        remaining: "Осталось",
+        expires: "Истекает",
+        yourLink: "Ваша ссылка",
+        ViewyourLink: "Нажмите для просмотра",
+        Status: "Статус",
+        Windows: "Windows",
+        Linux: "Linux",
+        iOS: "iOS",
+        Android: "Android",
+        Download_App: "Скачать приложение",
+        day: "День",
+        hour: "Час",
+        minute: "Минута",
+        expired: "Истекло",
+        infinite: "∞",
+        active: "Активна",
+        deactive: "Деактивирована",
+        lessMinutes: "Меньше минуты",
+        noSubs: "Подписка не найдена."
+    },
+
 };
 
         const langKey = () => document.body.getAttribute('data-lang') || 'fa';

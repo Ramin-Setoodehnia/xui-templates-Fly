@@ -37,6 +37,12 @@ systemctl restart DVHOST_TEMPLATE
 systemctl status DVHOST_TEMPLATE
 ```
 
+## Languages
+
+- English
+- Persian
+- Russian
+
 
 # استفاده
 
