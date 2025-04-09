@@ -95,7 +95,7 @@ function getConnectionTitle(link) {
 %>
 </head>
 
-<body data-theme="light" data-lang="en">
+<body data-theme="light" data-lang="<%= data.DEFAULT_LANG ? 'fa' : 'en' %>" class="<%= data.enable ? 'rtl' : '' %>">
     <div class="container">
         <div class="card animate-fade-in">
             <div class="card-header">
